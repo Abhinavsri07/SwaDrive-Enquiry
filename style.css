@@ -1,0 +1,702 @@
+/* ==========================================================================
+   SwaDrive - Vehicle Enquiry Form Stylesheet
+   Faithfully inspired by Reference Image 1 & SwaDrive Logo Color Palette
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Design Tokens & Logo Color Gradients
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colors extracted from SwaDrive Logo */
+  --logo-blue: #0284c7;
+  --logo-sky: #0ea5e9;
+  --logo-indigo: #4f46e5;
+  --logo-purple: #7c3aed;
+  --logo-pink: #ec4899;
+  --logo-orange: #f97316;
+  --logo-amber: #f59e0b;
+
+  /* SwaDrive Logo Multi-Stop Gradient */
+  --grad-swadrive: linear-gradient(90deg, #0284c7 0%, #2563eb 25%, #6366f1 50%, #ec4899 75%, #f59e0b 100%);
+  --grad-swadrive-btn: linear-gradient(90deg, #0284c7 0%, #0099ff 40%, #6366f1 80%, #ec4899 100%);
+  --grad-swadrive-hover: linear-gradient(90deg, #0369a1 0%, #1d4ed8 40%, #4f46e5 80%, #db2777 100%);
+
+  /* Dark Cinematic Atmosphere Tokens */
+  --bg-dark-base: #070a12;
+  --bg-card: rgba(10, 15, 26, 0.46);
+  --bg-input: rgba(255, 255, 255, 0.08);
+  --bg-input-focus: rgba(255, 255, 255, 0.14);
+
+  /* Typography & Lines */
+  --color-text-white: #ffffff;
+  --color-text-dim: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-line: rgba(255, 255, 255, 0.35);
+  --color-line-focus: #0ea5e9;
+
+  /* Validation Colors */
+  --color-error: #ef4444;
+  --color-error-bg: rgba(239, 68, 68, 0.12);
+  --color-error-line: #f87171;
+  --color-success: #10b981;
+  --color-success-bg: rgba(16, 185, 129, 0.14);
+
+  /* Font & Transitions */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Reset & Core Base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-dark-base);
+  color: var(--color-text-white);
+  line-height: 1.5;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   Atmospheric Background (Night Sky, Clouds, Horizon, Logo & Motorcycle)
+   -------------------------------------------------------------------------- */
+.bg-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Sky gradient replicating dusk clouds in reference image */
+.sky-gradient {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 85% 75%, rgba(245, 158, 11, 0.07) 0%, transparent 45%),
+    radial-gradient(ellipse at 15% 25%, rgba(2, 132, 199, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 60%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #05070d 0%, #0c121e 35%, #111a2d 65%, #080c14 100%);
+}
+
+/* Cloud silhouettes */
+.cloud-layer {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 40%, rgba(255, 255, 255, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 75% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 45%),
+    radial-gradient(circle at 85% 65%, rgba(14, 165, 233, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 40% 70%, rgba(236, 72, 153, 0.03) 0%, transparent 35%);
+  mix-blend-mode: screen;
+}
+
+/* --------------------------------------------------------------------------
+   Main Content Layout
+   -------------------------------------------------------------------------- */
+.main-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.5rem 1.25rem 3.5rem 1.25rem;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Page Header & Title
+   -------------------------------------------------------------------------- */
+.page-headline-wrap {
+  text-align: center;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #7dd3fc;
+  margin-bottom: 0.75rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.brand-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+.page-title {
+  font-size: 2.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+  line-height: 1.15;
+}
+
+.page-subtitle {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  max-width: 480px;
+  margin-top: 0.55rem;
+  line-height: 1.5;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 640px) {
+  .page-title {
+    font-size: 1.7rem;
+  }
+  .page-subtitle {
+    font-size: 0.875rem;
+    padding: 0 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Form Card Wrapper & Background SwaDrive Image
+   -------------------------------------------------------------------------- */
+.form-container-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+/* SwaDrive Image placed directly in the Form's Background */
+.form-bg-artwork-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 580px;
+  max-width: 96%;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.92;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 45px rgba(2, 132, 199, 0.45));
+  animation: logoGlowFloat 7s ease-in-out infinite alternate;
+}
+
+.form-bg-artwork-img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+}
+
+@keyframes logoGlowFloat {
+  0% {
+    transform: translate(-50%, -50%) scale(0.98);
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 40px rgba(2, 132, 199, 0.4));
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.02);
+    filter: drop-shadow(0 18px 45px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 65px rgba(236, 72, 153, 0.45));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Glassy Enquiry Card (Frosted Glassmorphism with executive clean lines)
+   -------------------------------------------------------------------------- */
+.enquiry-card.glassy-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 540px;
+  background: rgba(10, 16, 30, 0.72);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.75), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    0 0 35px rgba(2, 132, 199, 0.16);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.enquiry-card.glassy-card:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 
+    0 28px 70px rgba(0, 0, 0, 0.85), 
+    inset 0 1px 2px rgba(255, 255, 255, 0.35),
+    0 0 45px rgba(14, 165, 233, 0.25);
+}
+
+/* Glass specular top highlight */
+.glass-shine-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Card Top Bar (Glassy Gradient from SwaDrive Logo)
+   -------------------------------------------------------------------------- */
+.card-top-bar {
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.9) 0%, rgba(37, 99, 235, 0.9) 25%, rgba(99, 102, 241, 0.9) 50%, rgba(236, 72, 153, 0.9) 75%, rgba(245, 158, 11, 0.9) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.card-top-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.card-top-badge {
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   Card Body & Notification Note
+   -------------------------------------------------------------------------- */
+.card-body {
+  padding: 1.75rem 1.75rem 2rem 1.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 480px) {
+  .card-body {
+    padding: 1.35rem 1.15rem 1.5rem 1.15rem;
+  }
+}
+
+.card-notice {
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  line-height: 1.45;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* --------------------------------------------------------------------------
+   Success Confirmation Banner
+   -------------------------------------------------------------------------- */
+.success-banner {
+  display: none;
+  background-color: var(--color-success-bg);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 4px;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.success-banner.is-visible {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.success-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-success);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.success-content {
+  flex: 1;
+}
+
+.success-title {
+  font-size: 0.975rem;
+  font-weight: 700;
+  color: #34d399;
+  margin-bottom: 0.2rem;
+}
+
+.success-text {
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  line-height: 1.45;
+}
+
+.success-reset-btn {
+  margin-top: 0.65rem;
+  background: var(--grad-swadrive-btn);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.success-reset-btn:hover {
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Form Fields (Underline Aesthetic as in Reference Image 1)
+   -------------------------------------------------------------------------- */
+.enquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.fields-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 500px) {
+  .fields-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-white);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.label-hint {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* Clean Modern Input Style */
+.field-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.925rem;
+  color: #ffffff;
+  background-color: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  padding: 0.72rem 0.9rem;
+  outline: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.field-input::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.field-input:focus {
+  background-color: rgba(15, 23, 42, 0.9);
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22);
+}
+
+/* Phone input with code prefix */
+.phone-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.phone-code {
+  padding: 0 0.5rem 0 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #38bdf8;
+  user-select: none;
+}
+
+.phone-input {
+  border: none;
+  background-color: transparent;
+  padding-left: 0.25rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.phone-wrapper:focus-within {
+  border-color: #38bdf8;
+  background-color: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22);
+}
+
+/* Select & Datalist Input Wrappers */
+.select-wrapper,
+.input-suggest-wrapper {
+  position: relative;
+}
+
+.field-datalist {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 1rem;
+  padding-right: 2.3rem;
+}
+
+/* Quick Selection Tag Pills */
+.quick-subject-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+}
+
+.subject-tag-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  padding: 0.28rem 0.72rem;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.subject-tag-btn:hover {
+  background: rgba(14, 165, 233, 0.2);
+  border-color: rgba(14, 165, 233, 0.5);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.subject-tag-btn.is-active {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.85), rgba(99, 102, 241, 0.85));
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.45);
+}
+
+/* Textarea Comments */
+.field-textarea {
+  resize: vertical;
+  min-height: 95px;
+  line-height: 1.5;
+}
+
+/* Error States */
+.field-input.has-error {
+  border-color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.08) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+}
+
+.phone-wrapper.has-error {
+  border-color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.08) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+}
+
+.error-message {
+  display: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #fca5a5;
+  margin-top: 0.3rem;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.error-message.is-visible {
+  display: flex;
+}
+
+.error-message svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--color-error);
+}
+
+/* --------------------------------------------------------------------------
+   Submit Button & Action Row (Clean, High-End & Professional)
+   -------------------------------------------------------------------------- */
+.action-row {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.submit-pill-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.submit-pill-btn:hover {
+  background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
+  box-shadow: 0 6px 26px rgba(14, 165, 233, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+.submit-pill-btn:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  width: 17px;
+  height: 17px;
+  transition: transform var(--transition-fast);
+}
+
+.submit-pill-btn:hover .btn-icon {
+  transform: translateX(3px) translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   Form Privacy & Trust Assurance
+   -------------------------------------------------------------------------- */
+.form-privacy-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  font-size: 0.775rem;
+  color: #94a3b8;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.privacy-icon {
+  width: 14px;
+  height: 14px;
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Clean Minimal Page Footer
+   -------------------------------------------------------------------------- */
+.page-footer {
+  margin-top: 2.25rem;
+  text-align: center;
+  font-size: 0.825rem;
+  color: var(--color-text-dim);
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility & Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

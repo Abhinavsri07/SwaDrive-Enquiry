@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" fill="none">
+  <defs>
+    <!-- Logo Body Linear Gradient -->
+    <linearGradient id="fullLogoGrad" x1="0%" y1="60%" x2="100%" y2="40%">
+      <stop offset="0%" stop-color="#0066cc" />
+      <stop offset="20%" stop-color="#0284c7" />
+      <stop offset="42%" stop-color="#4f46e5" />
+      <stop offset="68%" stop-color="#dc2626" />
+      <stop offset="85%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    
+    <!-- Text Dark Metallic Gradient -->
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="logoShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <g id="swadrive-emblem" filter="url(#logoShadow)" transform="translate(45, 10)">
+    <!-- Roof with Chimney -->
+    <path d="M 255 75 
+             L 138 170 
+             L 156 175 
+             L 255 95 
+             L 378 190 
+             L 378 95 
+             L 344 95 
+             L 344 163 
+             L 255 75 Z" 
+          fill="url(#fullLogoGrad)" />
+
+    <!-- Car Silhouette (Left side) -->
+    <path d="M 134 188
+             C 112 194 72 214 50 230
+             C 40 238 38 248 38 266
+             C 38 276 46 282 56 282
+             L 86 282
+             C 88 254 108 232 136 232
+             C 164 232 184 254 186 282
+             L 236 282
+             L 250 228
+             L 150 228
+             L 242 170
+             L 208 170
+             C 178 170 148 182 134 188 Z" 
+          fill="url(#fullLogoGrad)" />
+
+    <!-- Car Wheel -->
+    <circle cx="136" cy="270" r="32" fill="url(#fullLogoGrad)" />
+
+    <!-- Lightning Bolt (Center) -->
+    <path d="M 292 152
+             L 254 220
+             L 282 220
+             L 226 338
+             L 264 250
+             L 236 250
+             L 272 152 Z" 
+          fill="url(#fullLogoGrad)" />
+
+    <!-- Wrench & Right Body (Mobility / Service) -->
+    <path d="M 288 192
+             L 404 192
+             C 428 194 446 206 460 226
+             L 420 226
+             C 402 226 390 238 390 256
+             C 390 274 402 286 420 286
+             L 460 286
+             C 446 306 428 318 404 320
+             L 272 320
+             L 298 270
+             L 390 270
+             C 395 261 395 251 390 242
+             L 275 242
+             Z" 
+          fill="url(#fullLogoGrad)" />
+  </g>
+
+  <!-- Typography: SWADRIVE with orange bar on E -->
+  <g id="swadrive-text" transform="translate(50, 310)">
+    <!-- S -->
+    <path d="M 12 36 L 44 36 C 50 36 54 32 54 26 L 54 24 C 54 18 48 16 38 14 L 28 12 C 20 10 16 8 16 4 C 16 0 20 -2 28 -2 L 52 -2 L 52 4 L 28 4 C 24 4 22 5 22 7 C 22 9 25 10 32 12 L 42 14 C 52 16 60 20 60 26 L 60 28 C 60 36 52 42 42 42 L 12 42 Z" fill="#ffffff" />
+    
+    <!-- W -->
+    <path d="M 72 -2 L 81 42 L 95 42 L 105 14 L 115 42 L 129 42 L 138 -2 L 128 -2 L 122 28 L 111 -2 L 99 -2 L 88 28 L 82 -2 Z" fill="#ffffff" />
+    
+    <!-- A -->
+    <path d="M 148 42 L 165 -2 L 179 -2 L 196 42 L 185 42 L 180 28 L 164 28 L 159 42 Z M 166 22 L 178 22 L 172 6 Z" fill="#ffffff" />
+    
+    <!-- D -->
+    <path d="M 208 -2 L 230 -2 C 246 -2 256 8 256 20 C 256 32 246 42 230 42 L 208 42 Z M 218 5 L 218 35 L 229 35 C 239 35 245 28 245 20 C 245 12 239 5 229 5 Z" fill="#ffffff" />
+    
+    <!-- R -->
+    <path d="M 268 -2 L 292 -2 C 304 -2 312 5 312 16 C 312 24 306 30 297 32 L 314 42 L 302 42 L 288 33 L 278 33 L 278 42 L 268 42 Z M 278 5 L 278 26 L 290 26 C 298 26 302 22 302 16 C 302 9 298 5 290 5 Z" fill="#ffffff" />
+    
+    <!-- I -->
+    <path d="M 324 -2 L 334 -2 L 334 42 L 324 42 Z" fill="#ffffff" />
+    
+    <!-- V -->
+    <path d="M 346 -2 L 360 42 L 372 42 L 386 -2 L 375 -2 L 366 30 L 357 -2 Z" fill="#ffffff" />
+    
+    <!-- E with Orange Top Bar -->
+    <!-- Orange accent bar on top of E -->
+    <rect x="398" y="-4" width="38" height="8" rx="2" fill="#f97316" />
+    <!-- Rest of E -->
+    <path d="M 398 7 L 434 7 L 434 14 L 408 14 L 408 19 L 430 19 L 430 26 L 408 26 L 408 35 L 436 35 L 436 42 L 398 42 Z" fill="#ffffff" />
+  </g>
+</svg>

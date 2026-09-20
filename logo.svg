@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+  <defs>
+    <linearGradient id="swadriveGrad" x1="0%" y1="50%" x2="100%" y2="50%" gradientTransform="rotate(25)">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="25%" stop-color="#3b82f6" />
+      <stop offset="48%" stop-color="#6366f1" />
+      <stop offset="70%" stop-color="#ec4899" />
+      <stop offset="85%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <linearGradient id="swadriveGradVertical" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="35%" stop-color="#6366f1" />
+      <stop offset="70%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+  </defs>
+
+  <g id="logo-body" fill="url(#swadriveGrad)">
+    <!-- Roof with Chimney -->
+    <path d="M 255 130 
+             L 145 220 
+             L 162 225 
+             L 255 150 
+             L 370 240 
+             L 370 148 
+             L 338 148 
+             L 338 214 
+             L 255 130 Z" />
+
+    <!-- Car Silhouette (Left side) -->
+    <path d="M 140 238
+             C 118 244 80 262 60 278
+             C 50 286 48 296 48 312
+             C 48 322 55 328 65 328
+             L 94 328
+             C 96 302 116 282 142 282
+             C 168 282 188 302 190 328
+             L 236 328
+             L 250 276
+             L 155 276
+             L 242 220
+             L 208 220
+             C 180 220 152 232 140 238 Z" />
+
+    <!-- Car Wheel -->
+    <circle cx="142" cy="316" r="32" />
+
+    <!-- Lightning Bolt (Center) -->
+    <path d="M 292 205
+             L 254 268
+             L 282 268
+             L 230 380
+             L 264 295
+             L 238 295
+             L 272 205 Z" />
+
+    <!-- Wrench & Right Body (Mobility / Service) -->
+    <path d="M 290 242
+             L 396 242
+             C 418 244 436 256 448 274
+             L 410 274
+             C 394 274 382 286 382 302
+             C 382 318 394 330 410 330
+             L 448 330
+             C 436 348 418 360 396 362
+             L 272 362
+             L 298 315
+             L 384 315
+             C 388 306 388 298 384 289
+             L 275 289
+             Z" />
+  </g>
+</svg>
